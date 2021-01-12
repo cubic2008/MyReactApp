@@ -1,5 +1,5 @@
 import logo from './logo.svg';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import './App.css';
 
@@ -14,7 +14,7 @@ function App() {
 
 function MyPage1 ( ) {
 
-  const [myData, setMyData] = useState ( "Hi" );
+  const [myData, setMyData] = useState ( "Hi, have a great day!" );
 
   return <div>
     <h1>Hello</h1>
@@ -26,10 +26,19 @@ function Example() {
   // Declare a new state variable, which we'll call "count"
   const [count, setCount] = useState(0);
 
+  useEffect(() => {
+    // Update the document title using the browser API
+    document.title = `You clicked ${count} times`;
+  });
+
+  function testF() {
+    setCount(count + 1);
+  }
+
   return (
     <div>
       <p>You clicked {count} times</p>
-      <button onClick={() => setCount(count + 1)}>
+      <button onClick={testF}>
         Click me
       </button>
     </div>
